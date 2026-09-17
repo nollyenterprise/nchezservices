@@ -50,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ onRequestQuote, onExploreServices })
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#E10600]">
+            <span className="text-[10px] sm:text-sm font-semibold uppercase tracking-[0.12em] sm:tracking-[0.25em] text-[#E10600]">
               EQUIPMENT SUPPLY • PROCUREMENT • LOGISTICS
             </span>
           </motion.div>
@@ -58,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({ onRequestQuote, onExploreServices })
           {/* Headline - Exact 4-Line Stack from avajonn */}
           <motion.h1
             id="hero-headline"
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.98] mb-8 select-none"
+            className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.98] mb-8 select-none"
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
