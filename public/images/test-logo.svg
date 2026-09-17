@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" fill="none">
+  <!-- Background -->
+  <rect width="800" height="800" fill="#FFFFFF" />
+
+  <!-- Logo Mark Group -->
+  <g transform="translate(400, 290)">
+    <!-- Left Stem: Tall pillar with angled head and diagonal cut -->
+    <!-- Center of left pillar is around x = -70 -->
+    <path 
+      d="M -105 130 
+         L -105 -130 
+         L -30 -185 
+         L -30 -135 
+         L 32 -90 
+         L -30 130 
+         Z" 
+      fill="#F90909" 
+    />
+    
+    <!-- Right Shape: Angled bridge and vertical leg with diagonal cut gap -->
+    <path 
+      d="M -15 -68 
+         L 60 -18 
+         L 105 12 
+         L 105 120 
+         L 45 120 
+         L 45 48 
+         L -15 8 
+         Z" 
+      fill="#F90909" 
+    />
+  </g>
+
+  <!-- Brand Typography: Nchez services limited -->
+  <g transform="translate(400, 520)">
+    <text 
+      x="0" 
+      y="0" 
+      text-anchor="middle" 
+      fill="#32135C" 
+      font-family="'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" 
+      font-size="44" 
+      font-weight="700" 
+      letter-spacing="0.5px"
+    >
+      Nchez services limited
+    </text>
+  </g>
+</svg>

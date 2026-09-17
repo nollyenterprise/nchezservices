@@ -1,0 +1,6 @@
+{
+  "name": "Nchez Services Limited",
+  "description": "Nchez Services Limited delivers multipurpose industrial equipment supply, marine and inland logistics, engineering fabrication, and technical procurement solutions in Port Harcourt and across Nigeria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

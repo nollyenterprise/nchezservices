@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 560" width="100%" height="100%" fill="none">
+  <!-- Clean transparent/white-ready container -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .nchez-text {
+        font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-weight: 700;
+        fill: #32135C;
+        letter-spacing: 0.01em;
+      }
+    </style>
+  </defs>
+
+  <!-- Centered Red Geometric Emblem matching user's nchezz.jpeg -->
+  <g transform="translate(300, 210)">
+    <!-- Left Pillar Shape -->
+    <path 
+      d="M -75 115 
+         L -75 -95 
+         L -22 -128 
+         L -22 -98 
+         L 16 -74 
+         L -18 85 
+         Z" 
+      fill="#F90909"
+    />
+
+    <!-- Right Arch & Leg Shape separated by precise diagonal gap -->
+    <path 
+      d="M -9 -56 
+         L 52 -18 
+         L 75 -4 
+         L 75 98 
+         L 28 98 
+         L 28 32 
+         L -9 9 
+         Z" 
+      fill="#F90909"
+    />
+  </g>
+
+  <!-- Typography: Nchez services limited in corporate brand deep purple -->
+  <g transform="translate(300, 430)">
+    <text 
+      x="0" 
+      y="0" 
+      text-anchor="middle" 
+      class="nchez-text" 
+      font-size="36"
+    >
+      <tspan fill="#32135C">Nchez services limited</tspan>
+    </text>
+  </g>
+</svg>

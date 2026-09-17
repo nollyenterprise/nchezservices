@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- Clean white background pill so it shows in all browser tab themes -->
+  <rect width="64" height="64" rx="14" fill="#FFFFFF" />
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" stroke="#32135C" stroke-opacity="0.12" stroke-width="1.5" />
+  
+  <!-- Centered Emblem -->
+  <g transform="translate(32, 33) scale(0.19)">
+    <!-- Left Pillar Shape -->
+    <path 
+      d="M -75 115 
+         L -75 -95 
+         L -22 -128 
+         L -22 -98 
+         L 16 -74 
+         L -18 85 
+         Z" 
+      fill="#F90909"
+    />
+
+    <!-- Right Arch & Leg Shape -->
+    <path 
+      d="M -9 -56 
+         L 52 -18 
+         L 75 -4 
+         L 75 98 
+         L 28 98 
+         L 28 32 
+         L -9 9 
+         Z" 
+      fill="#F90909"
+    />
+  </g>
+</svg>

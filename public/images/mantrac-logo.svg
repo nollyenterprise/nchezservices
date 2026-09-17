@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" width="520" height="130" fill="none">
+  <!-- Left Yellow Section (Mantrac) -->
+  <rect x="0" y="0" width="380" height="130" fill="#FFC800" />
+  
+  <!-- Right Black Section (CAT) -->
+  <rect x="380" y="0" width="140" height="130" fill="#000000" />
+
+  <!-- Mantrac Icon Badge -->
+  <g transform="translate(60, 24)">
+    <!-- Square outline -->
+    <rect x="0" y="0" width="76" height="80" rx="3" fill="none" stroke="#000000" stroke-width="5" />
+    
+    <!-- Stylized Hands & M Emblem -->
+    <!-- Left Hand -->
+    <path d="M16 60 C 13 46, 15 36, 22 28 C 22 34, 25 40, 29 46 C 26 52, 23 58, 20 60 Z" fill="#000000" />
+    <!-- Right Hand -->
+    <path d="M60 60 C 63 46, 61 36, 54 28 C 54 34, 51 40, 47 46 C 50 52, 53 58, 56 60 Z" fill="#000000" />
+    <!-- Letter M inside emblem -->
+    <path d="M28 32 H33 L38 42 L43 32 H48 V50 H44 V39 L39.5 48 H36.5 L32 39 V50 H28 Z" fill="#000000" />
+    
+    <!-- Under-badge MANTRAC text box -->
+    <rect x="8" y="66" width="60" height="10" fill="#000000" />
+    <text x="38" y="74" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="900" fill="#FFC800" text-anchor="middle" letter-spacing="0.08em">MANTRAC</text>
+  </g>
+
+  <!-- Mantrac Text -->
+  <text x="150" y="82" font-family="'Arial Black', Impact, 'Trebuchet MS', sans-serif" font-size="52" font-weight="900" fill="#000000" letter-spacing="0.01em">MANTRAC</text>
+
+  <!-- Caterpillar CAT Logo Section -->
+  <g transform="translate(395, 25)">
+    <!-- Letters C A T -->
+    <!-- Letter C -->
+    <path d="M7 66 C 1 66, 0 62, 0 54 V 24 C 0 16, 1 12, 7 12 H 30 V 23 H 13 V 55 H 30 V 66 Z" fill="#FFFFFF" />
+    
+    <!-- Letter A with Caterpillar Triangle -->
+    <path d="M34 66 L 47 12 H 60 L 73 66 H 60 L 58 55 H 49 L 47 66 Z M 51 44 H 56 L 53.5 28 Z" fill="#FFFFFF" />
+    <!-- Iconic Caterpillar Yellow Triangle under the A -->
+    <polygon points="46,66 61,66 53.5,49" fill="#FFC800" />
+
+    <!-- Letter T -->
+    <path d="M74 12 H 105 V 23 H 96 V 66 H 83 V 23 H 74 Z" fill="#FFFFFF" />
+
+    <!-- Registered trademark symbol -->
+    <text x="106" y="22" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">®</text>
+  </g>
+</svg>

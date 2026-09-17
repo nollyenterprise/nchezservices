@@ -1,0 +1,356 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { SERVICES } from '../data/content';
+import { ServiceItem, ServiceId } from '../types';
+import { ServiceSubPage } from './ServiceSubPage';
+import { 
+  ShieldCheck, 
+  Truck, 
+  TrendingDown, 
+  Wrench, 
+  ArrowRight,
+  Layers
+} from 'lucide-react';
+
+interface ServicesPageProps {
+  onNavigateHome: () => void;
+  onSelectServiceModal: (service: ServiceItem) => void;
+  onRequestQuote: (serviceId?: string) => void;
+  onContactTeam: () => void;
+  initialSelectedServiceId?: ServiceId | null;
+}
+
+export const ServicesPage: React.FC<ServicesPageProps> = ({
+  onNavigateHome,
+  onSelectServiceModal: _onSelectServiceModal,
+  onRequestQuote,
+  onContactTeam,
+  initialSelectedServiceId = null
+}) => {
+  const [activeSubpageId, setActiveSubpageId] = useState<ServiceId | null>(initialSelectedServiceId);
+
+  useEffect(() => {
+    setActiveSubpageId(initialSelectedServiceId);
+    if (initialSelectedServiceId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [initialSelectedServiceId]);
+
+  const getServiceIcon = (iconName: string, className = "w-6 h-6 text-[#E10600]") => {
+    switch (iconName) {
+      case 'ShieldCheck':
+        return <ShieldCheck className={className} strokeWidth={2} />;
+      case 'Truck':
+        return <Truck className={className} strokeWidth={2} />;
+      case 'TrendingDown':
+        return <TrendingDown className={className} strokeWidth={2} />;
+      case 'Wrench':
+        return <Wrench className={className} strokeWidth={2} />;
+      default:
+        return <Layers className={className} strokeWidth={2} />;
+    }
+  };
+
+  const handleScrollToGrid = () => {
+    const gridElem = document.getElementById('services-grid-section');
+    if (gridElem) {
+      const offset = 80;
+      const topPos = gridElem.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: topPos, behavior: 'smooth' });
+    }
+  };
+
+  // If a subpage is selected, render the dedicated 6-section Subpage component
+  if (activeSubpageId) {
+    return (
+      <ServiceSubPage
+        serviceId={activeSubpageId}
+        onNavigateHome={onNavigateHome}
+        onNavigateAllServices={() => {
+          setActiveSubpageId(null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onSelectSubpage={(newId) => {
+          setActiveSubpageId(newId);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onRequestQuote={onRequestQuote}
+        onContactTeam={onContactTeam}
+      />
+    );
+  }
+
+  return (
+    <div id="services-page-container" className="min-h-screen bg-white text-[#18181B]">
+      
+      {/* ========================================================================= */}
+      {/* SECTION 1: HERO                                                           */}
+      {/* ========================================================================= */}
+      <section 
+        id="services-hero-banner" 
+        className="relative w-full overflow-hidden bg-[#0A0D17] min-h-[560px] sm:min-h-[620px] flex items-center"
+      >
+        {/* Photographic Background - Rich and Clear */}
+        <motion.div 
+          className="absolute inset-0 z-0"
+          initial={{ scale: 1.05, opacity: 0.85 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <img
+            src="/images/pexels-vik-nesh-waran-32881851-7024831.jpg"
+            alt="Energy value chain engineer in protective gear"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-[center_28%] sm:object-[right_25%] md:object-[right_20%] filter brightness-[0.88] contrast-[1.05]"
+          />
+          
+          {/* Subtle Grid blueprint pattern overlay */}
+          <div 
+            className="absolute inset-0 opacity-15 pointer-events-none"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)`,
+              backgroundSize: '48px 48px'
+            }}
+          />
+
+          {/* Deep Navy/Purple Branding Vignette and Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070A14]/90 via-[#0D152A]/75 to-transparent lg:to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D17] via-transparent to-black/30" />
+        </motion.div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-36 pb-20 sm:pt-40 sm:pb-28 w-full">
+          <div className="max-w-3xl">
+            
+            {/* Eyebrow: WHAT WE DO (No dash) */}
+            <motion.div 
+              className="inline-flex items-center mb-5"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <span 
+                id="services-hero-eyebrow"
+                className="text-xs sm:text-sm uppercase font-semibold tracking-[0.25em] text-[#E10600]"
+              >
+                WHAT WE DO
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1 
+              id="services-hero-headline"
+              className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12] mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Engineering & Industrial Solutions
+            </motion.h1>
+
+            {/* Clear & High-Visibility Subtext description */}
+            <motion.p 
+              className="text-gray-100 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-9 max-w-2xl drop-shadow-sm"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.35 }}
+            >
+              Four core capabilities, one accountable partner. We architect, supply, transport, and construct high-performance industrial assets, delivering certainty from initial procurement to long-term field operations.
+            </motion.p>
+
+            {/* Dual CTA Buttons */}
+            <motion.div 
+              className="flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+            >
+              <button
+                id="services-hero-start-btn"
+                type="button"
+                onClick={() => onRequestQuote()}
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#E10600] hover:bg-[#C80500] text-white font-medium text-sm tracking-wider uppercase rounded-lg shadow-[0_6px_20px_rgba(225,6,0,0.35)] hover:shadow-[0_10px_24px_rgba(225,6,0,0.5)] transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation"
+              >
+                <span>GET QUOTE</span>
+                <ArrowRight className="w-4 h-4 stroke-[2]" />
+              </button>
+
+              <button
+                id="services-hero-view-btn"
+                type="button"
+                onClick={handleScrollToGrid}
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium text-sm tracking-wider uppercase rounded-lg border border-white/25 backdrop-blur-md transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation"
+              >
+                <span>EXPLORE SERVICES</span>
+                <ArrowRight className="w-4 h-4 stroke-[2]" />
+              </button>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ========================================================================= */}
+      {/* SECTION 2: CAPABILITIES SHOWCASE CARDS (4 Core Services: 01 to 04)        */}
+      {/* ========================================================================= */}
+      <section 
+        id="services-grid-section" 
+        className="py-16 sm:py-24 bg-white relative scroll-mt-20 border-b border-gray-100"
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          
+          {/* Section Header */}
+          <div className="max-w-3xl mb-12 sm:mb-14">
+            <div className="inline-flex items-center mb-3">
+              <span className="text-xs uppercase font-semibold tracking-[0.25em] text-[#E10600]">
+                CAPABILITIES & EXPERTISE
+              </span>
+            </div>
+            
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#32135C] tracking-tight leading-tight mb-4">
+              Engineering & Industrial Solutions
+            </h2>
+            
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-normal">
+              Four specialized capabilities engineered to streamline procurement, transport, fabrication, and equipment deployment with single-point accountability.
+            </p>
+          </div>
+
+          {/* Service Cards Grid - 100% Clickable Buttons on Phone, Tablet & Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+            {SERVICES.map((service) => {
+              return (
+                <button
+                  type="button"
+                  key={service.id}
+                  id={`service-card-full-${service.id}`}
+                  onClick={() => {
+                    setActiveSubpageId(service.id);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="group relative w-full text-left min-h-[410px] sm:min-h-[440px] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-5 sm:p-7 bg-[#0A0D17] border border-gray-700/60 hover:border-[#E10600] active:scale-[0.99] touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E10600]"
+                >
+                  {/* Background Photographic Image - Highly Visible & Vibrant */}
+                  <img
+                    src={service.image || '/images/Strategic Procurement.jpg'}
+                    alt={service.title}
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = 'true';
+                        target.src = '/image/Strategic Procurement.jpg';
+                      }
+                    }}
+                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.06] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+
+                  {/* Gradient Overlay protecting readability while leaving the background image visible */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D17] via-[#0A0D17]/60 to-black/25 group-hover:via-[#0A0D17]/50 transition-colors duration-300 pointer-events-none" />
+
+                  {/* Top Row: Number 01, 02, 03, 04 */}
+                  <div className="relative z-10 flex items-center justify-between pointer-events-none">
+                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-black/75 backdrop-blur-md border border-white/25 font-mono text-white font-semibold text-xs tracking-wider shadow-md">
+                      {service.number}
+                    </span>
+                  </div>
+
+                  {/* Bottom Row: Icon + Title + Description + Action */}
+                  <div className="relative z-10 space-y-3.5 pt-4 pointer-events-none">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2.5 rounded-lg bg-black/70 backdrop-blur-md border border-white/20 shadow-sm flex-shrink-0">
+                        {getServiceIcon(service.icon, "w-5 h-5 text-[#E10600]")}
+                      </div>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-red-100 transition-colors drop-shadow-md">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    {/* Clear, highly readable description */}
+                    <p className="text-gray-100 text-sm sm:text-base font-normal leading-relaxed drop-shadow-sm">
+                      {service.shortDescription}
+                    </p>
+
+                    {/* Learn more link */}
+                    <div className="pt-2 flex items-center justify-between border-t border-white/20">
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#E10600] group-hover:text-red-400 transition-colors">
+                        <span>Learn more</span>
+                        <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </span>
+                    </div>
+                  </div>
+
+                </button>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ========================================================================= */}
+      {/* SECTION 3: NEED A CUSTOM SOLUTION? (Nchez Corporate Brand Palette)        */}
+      {/* ========================================================================= */}
+      <section id="custom-solution-section" className="py-20 sm:py-28 bg-[#FAFAFA] relative">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          
+          <div 
+            id="custom-solution-card"
+            className="border-2 border-[#32135C]/20 bg-white rounded-3xl p-8 sm:p-12 lg:p-14 text-center max-w-4xl mx-auto shadow-[0_12px_36px_rgba(50,19,92,0.06)] hover:shadow-[0_18px_48px_rgba(50,19,92,0.12)] hover:border-[#32135C]/40 transition-all duration-300 relative overflow-hidden"
+          >
+            {/* Decorative Brand Accent Line */}
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#32135C] via-[#E10600] to-[#32135C]" />
+
+            {/* Title */}
+            <h3 
+              id="custom-solution-title"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#32135C] tracking-tight mb-4 font-display"
+            >
+              Need a Custom Solution?
+            </h3>
+
+            {/* Clear, visible description */}
+            <p 
+              id="custom-solution-desc"
+              className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8 font-normal"
+            >
+              Every project is unique. Our team of experienced engineers will work with you to develop tailored solutions that meet your specific technical and operational requirements.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {/* Primary Solid Button: Get Quote */}
+              <button
+                id="custom-solution-quote-btn"
+                type="button"
+                onClick={() => onRequestQuote()}
+                className="inline-flex items-center gap-2 px-7 py-3 bg-[#E10600] hover:bg-[#C80500] text-white font-medium text-sm tracking-wider uppercase rounded-xl shadow-[0_6px_18px_rgba(225,6,0,0.25)] hover:shadow-[0_10px_22px_rgba(225,6,0,0.4)] transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation"
+              >
+                <span>Get Quote</span>
+                <ArrowRight className="w-4 h-4 stroke-[2]" />
+              </button>
+
+              {/* Secondary Outlined Button: Contact Us */}
+              <button
+                id="custom-solution-contact-btn"
+                type="button"
+                onClick={onContactTeam}
+                className="inline-flex items-center gap-2 px-7 py-3 border-2 border-[#32135C] text-[#32135C] hover:bg-[#32135C] hover:text-white font-medium text-sm tracking-wider uppercase rounded-xl transition-all duration-200 active:scale-95 cursor-pointer shadow-sm touch-manipulation"
+              >
+                <span>Contact Us</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  );
+};
