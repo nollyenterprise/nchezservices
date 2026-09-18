@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 interface LogoProps {
   className?: string;
+  imageSrc?: string;
   variant?: 'light' | 'dark' | 'on-white';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   layout?: 'image' | 'horizontal' | 'stacked';
@@ -10,37 +11,27 @@ interface LogoProps {
 
 /**
  * Official Nchez Services Limited Logo Component
- * Uses nchezz.jpeg / nchezz-crop.jpeg from the image folder
  */
 export const Logo: React.FC<LogoProps> = ({ 
   className = '', 
+  imageSrc = '/image/ncheyyy.jpg',
   variant = 'dark',
   size = 'md',
   layout = 'image',
   showSubtext = true,
 }) => {
-  // Use uploaded /image/nchexx.jpeg for logo
-  const [imgSrc, setImgSrc] = useState('/image/nchexx.jpeg');
+  const [imgSrc, setImgSrc] = useState(imageSrc);
   const isLight = variant === 'light';
-
   const handleImageError = () => {
-    if (imgSrc === '/image/nchexx.jpeg') {
-      setImgSrc('/public/image/nchexx.jpeg');
-    } else if (imgSrc === '/public/image/nchexx.jpeg') {
-      setImgSrc('/image/nchezz-crop.jpeg');
-    } else if (imgSrc === '/image/nchezz-crop.jpeg') {
-      setImgSrc('/image/nchezz.jpeg');
-    } else {
-      setImgSrc('/nchezz.jpeg');
-    }
+    setImgSrc(imageSrc);
   };
 
   // Prominent height classes ensuring the logo is boldly visible
   const imageHeights = {
-    sm: 'h-9 sm:h-10',
-    md: 'h-11 sm:h-13',
+    sm: 'h-10 sm:h-12',
+    md: 'h-12 sm:h-14',
     lg: 'h-16 sm:h-20',
-    xl: 'h-24 sm:h-28',
+    xl: 'h-20 sm:h-24',
   };
 
   const titleSizes = {
@@ -61,7 +52,7 @@ export const Logo: React.FC<LogoProps> = ({
     <img
       src={imgSrc}
       alt="Nchez Services Limited"
-      className={`${imageHeights[size]} w-auto max-h-full object-contain transition-transform duration-300 group-hover:scale-105`}
+      className={`${imageHeights[size]} w-auto max-w-full max-h-full rounded-lg object-contain transition-transform duration-300 group-hover:scale-105`}
       onError={handleImageError}
       loading="eager"
       decoding="async"
@@ -106,17 +97,6 @@ export const Logo: React.FC<LogoProps> = ({
   }
 
   // Default image layout: renders logo badge cleanly
-  if (isLight) {
-    return (
-      <div 
-        id="company-logo" 
-        className={`inline-flex items-center justify-center bg-white rounded-lg px-3 py-1 shadow-sm border border-white/30 select-none ${className}`}
-      >
-        {mainImage}
-      </div>
-    );
-  }
-
   return (
     <div id="company-logo" className={`inline-flex items-center justify-center select-none ${className}`}>
       {mainImage}

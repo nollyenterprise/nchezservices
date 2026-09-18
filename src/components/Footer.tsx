@@ -55,8 +55,8 @@ export const Footer: React.FC<FooterProps> = ({
               }}
               className="inline-block transition-transform hover:scale-[1.02]"
             >
-              <div className="bg-white px-5 py-2.5 rounded-xl shadow-md border border-white/20 inline-flex items-center justify-center">
-                <Logo variant="dark" size="lg" />
+              <div className="inline-flex items-center justify-center rounded-lg bg-white px-3 sm:px-4 py-2 shadow-sm">
+                <Logo variant="dark" size="lg" imageSrc="/image/ncheyyy.jpg" />
               </div>
             </a>
             

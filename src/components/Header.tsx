@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-precision ${headerBgClass}`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 flex items-center justify-between gap-2">
         
         {/* Logo Card Container */}
         <a 
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
             }
           }}
         >
-          <span className="relative inline-flex items-center justify-center overflow-hidden rounded-xl border border-[#32135C]/20 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.12)] transition-all duration-300 h-14 sm:h-16 px-4 py-1.5 hover:shadow-xl hover:border-[#E10600]">
+          <span className="relative inline-flex max-w-[58vw] items-center justify-center overflow-hidden rounded-lg bg-white px-2 sm:px-4 py-1.5 shadow-sm transition-all duration-300 h-14 sm:h-16 hover:scale-[1.02]">
             <Logo variant="dark" size="md" />
           </span>
         </a>
@@ -331,7 +331,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex lg:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-1.5 sm:gap-3 flex-shrink-0">
           <button
             id="mobile-quote-btn-mini"
             onClick={onRequestQuote}
